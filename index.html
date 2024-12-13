@@ -6,7 +6,6 @@
     <title>MelodyBank - Turn Music Into Money</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <script src="https://js.stripe.com/v3/"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" type="image/svg+xml" href="images/logo.svg">
 </head>
@@ -141,92 +140,79 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-bold text-center mb-4">Optional Premium Features</h2>
             <p class="text-xl text-gray-300 text-center mb-16">The app is free to download and use. Upgrade anytime to unlock premium features.</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Free Plan -->
-                <div class="bg-gray-800 rounded-lg p-8 border-2 border-gray-700">
-                    <h3 class="text-2xl font-bold text-center mb-4">Free</h3>
-                    <p class="text-3xl font-bold text-center mb-8">$0<span class="text-lg font-normal">/month</span></p>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-2"></i>
-                            Basic music tasks
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-2"></i>
-                            Limited tasks per month
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-2"></i>
-                            Core features
-                        </li>
-                    </ul>
-                    <div class="text-center">
-                        <a href="#downloads" class="inline-block w-full px-4 py-2 bg-blue-600 rounded hover:bg-blue-700">
-                            Get Started Free
-                        </a>
+            <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="px-6 py-8">
+                        <h3 class="text-2xl font-bold text-gray-900 text-center">Free</h3>
+                        <div class="mt-4 flex justify-center">
+                            <span class="text-4xl font-bold">$0</span>
+                            <span class="text-gray-600 ml-1 mt-8">/month</span>
+                        </div>
+                        <ul class="mt-6 space-y-4">
+                            <li class="flex items-center">
+                                <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="ml-3 text-gray-600">Basic Features</span>
+                            </li>
+                        </ul>
+                        <button class="mt-8 w-full bg-indigo-600 text-white rounded-md px-4 py-2 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            Download Now
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-indigo-500">
+                    <div class="px-6 py-8">
+                        <h3 class="text-2xl font-bold text-gray-900 text-center">Pro</h3>
+                        <div class="mt-4 flex justify-center">
+                            <span class="text-4xl font-bold">$9.99</span>
+                            <span class="text-gray-600 ml-1 mt-8">/month</span>
+                        </div>
+                        <ul class="mt-6 space-y-4">
+                            <li class="flex items-center">
+                                <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="ml-3 text-gray-600">All Free Features</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="ml-3 text-gray-600">Premium Support</span>
+                            </li>
+                        </ul>
+                        <button class="mt-8 w-full bg-indigo-600 text-white rounded-md px-4 py-2 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" disabled>
+                            Coming Soon
+                        </button>
                     </div>
                 </div>
 
-                <!-- Pro Plan -->
-                <div class="bg-gray-800 rounded-lg p-8 border-2 border-blue-500 transform scale-105">
-                    <div class="absolute top-0 right-0 bg-blue-500 text-white px-2 py-1 text-sm rounded-bl">Popular</div>
-                    <h3 class="text-2xl font-bold text-center mb-4">Pro</h3>
-                    <p class="text-3xl font-bold text-center mb-8">$9.99<span class="text-lg font-normal">/month</span></p>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-2"></i>
-                            Priority access to tasks
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-2"></i>
-                            Unlimited tasks
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-2"></i>
-                            Early access features
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-2"></i>
-                            Premium support
-                        </li>
-                    </ul>
-                    <div class="text-center">
-                        <a href="#" class="subscribe-btn inline-block w-full px-4 py-2 bg-blue-600 rounded hover:bg-blue-700" data-plan="pro">
-                            Subscribe Now
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Enterprise Plan -->
-                <div class="bg-gray-800 rounded-lg p-8 border-2 border-gray-700">
-                    <h3 class="text-2xl font-bold text-center mb-4">Enterprise</h3>
-                    <p class="text-3xl font-bold text-center mb-8">$19.99<span class="text-lg font-normal">/month</span></p>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-2"></i>
-                            Highest priority tasks
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-2"></i>
-                            Unlimited everything
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-2"></i>
-                            Beta feature access
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-2"></i>
-                            Dedicated support
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-2"></i>
-                            Custom preferences
-                        </li>
-                    </ul>
-                    <div class="text-center">
-                        <a href="#" class="subscribe-btn inline-block w-full px-4 py-2 bg-blue-600 rounded hover:bg-blue-700" data-plan="enterprise">
-                            Contact Sales
-                        </a>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="px-6 py-8">
+                        <h3 class="text-2xl font-bold text-gray-900 text-center">Enterprise</h3>
+                        <div class="mt-4 flex justify-center">
+                            <span class="text-4xl font-bold">$29.99</span>
+                            <span class="text-gray-600 ml-1 mt-8">/month</span>
+                        </div>
+                        <ul class="mt-6 space-y-4">
+                            <li class="flex items-center">
+                                <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="ml-3 text-gray-600">All Pro Features</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="ml-3 text-gray-600">Priority Support</span>
+                            </li>
+                        </ul>
+                        <button class="mt-8 w-full bg-indigo-600 text-white rounded-md px-4 py-2 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" disabled>
+                            Coming Soon
+                        </button>
                     </div>
                 </div>
             </div>
@@ -267,8 +253,8 @@
                         <li>✓ Weekly Payouts</li>
                         <li>✓ Email Support</li>
                     </ul>
-                    <button class="payment-button mt-6 w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" data-plan="basic">
-                        Subscribe Now
+                    <button class="payment-button mt-6 w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" disabled>
+                        Coming Soon
                     </button>
                 </div>
                 <div class="bg-gray-700 rounded-lg p-6 border-2 border-blue-500">
@@ -280,8 +266,8 @@
                         <li>✓ Daily Payouts</li>
                         <li>✓ Priority Support</li>
                     </ul>
-                    <button class="payment-button mt-6 w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" data-plan="pro">
-                        Subscribe Now
+                    <button class="payment-button mt-6 w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" disabled>
+                        Coming Soon
                     </button>
                 </div>
                 <div class="bg-gray-700 rounded-lg p-6">
@@ -293,8 +279,8 @@
                         <li>✓ Instant Payouts</li>
                         <li>✓ Dedicated Support</li>
                     </ul>
-                    <button class="payment-button mt-6 w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" data-plan="enterprise">
-                        Subscribe Now
+                    <button class="payment-button mt-6 w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" disabled>
+                        Coming Soon
                     </button>
                 </div>
             </div>
