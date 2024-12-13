@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: melodybank
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: STRIPE_PUBLISHABLE_KEY
+        value: pk_test_51OAftokHiGPLX1HIYc8e4bmquS9khYfHMmmLimk9h77YmBmfgj5XN50rdEax5IrEnNKR0t0b8nCogbp4yE78vsKA00dNkV1MSF
+      - key: NODE_VERSION
+        value: 18.x
