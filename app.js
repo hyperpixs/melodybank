@@ -122,10 +122,54 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Initialize Stripe
-const stripe = Stripe('your_publishable_key'); // Replace with your actual Stripe publishable key
-const elements = stripe.elements();
+const stripe = Stripe('your_publishable_key'); // Replace with your actual publishable key
+
+// Handle subscription button clicks
+document.querySelectorAll('.subscribe-btn').forEach(button => {
+    button.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const plan = e.target.dataset.plan;
+        
+        try {
+            // Call your server to create a Checkout Session
+            const response = await fetch('/create-checkout-session', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    plan: plan
+                })
+            });
+            
+            const session = await response.json();
+            
+            // Redirect to Stripe Checkout
+            const result = await stripe.redirectToCheckout({
+                sessionId: session.id
+            });
+            
+            if (result.error) {
+                alert(result.error.message);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Something went wrong. Please try again.');
+        }
+    });
+});
+
+// Handle download button clicks
+document.querySelectorAll('.download-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+        const platform = e.target.closest('.download-btn').dataset.platform;
+        // You can add analytics tracking here
+        console.log(`Download clicked for ${platform}`);
+    });
+});
 
 // Create card element
+const elements = stripe.elements();
 const card = elements.create('card');
 const cardElement = document.getElementById('card-element');
 if (cardElement) {
