@@ -313,6 +313,63 @@
         </div>
     </footer>
 
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        // Initialize Stripe with your publishable key
+        const stripe = Stripe('pk_test_51OAftokHiGPLX1HIYc8e4bmquS9khYfHMmmLimk9h77YmBmfgj5XN50rdEax5IrEnNKR0t0b8nCogbp4yE78vsKA00dNkV1MSF');
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle subscription button clicks
+            const subscribeButtons = document.querySelectorAll('.subscribe-btn');
+            subscribeButtons.forEach(button => {
+                button.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    const plan = e.target.dataset.plan;
+                    
+                    try {
+                        const response = await fetch('/create-checkout-session', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                priceId: plan === 'pro' ? 'price_1QVbIqKHiGPLX1Hi5QEnlbDC' : 'price_1QVbISKHiGPLX1Hi1jomxee4'
+                            }),
+                        });
+                        
+                        const session = await response.json();
+                        
+                        // Redirect to Stripe Checkout
+                        const result = await stripe.redirectToCheckout({
+                            sessionId: session.sessionId
+                        });
+                        
+                        if (result.error) {
+                            alert(result.error.message);
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('Something went wrong. Please try again.');
+                    }
+                });
+            });
+
+            // Handle download buttons
+            const downloadButtons = document.querySelectorAll('.download-btn');
+            downloadButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const platform = e.target.dataset.platform;
+                    // Add download tracking here
+                    console.log(`Download requested for ${platform}`);
+                    // Simulate download start
+                    setTimeout(() => {
+                        alert(`Download started for ${platform}! (Demo only)`);
+                    }, 1000);
+                });
+            });
+        });
+    </script>
     <script src="app.js"></script>
 </body>
 </html>
