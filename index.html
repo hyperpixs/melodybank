@@ -315,7 +315,7 @@
 
     <script src="https://js.stripe.com/v3/"></script>
     <script>
-        // Initialize Stripe with your publishable key
+        // Initialize Stripe
         const stripe = Stripe('pk_test_51OAftokHiGPLX1HIYc8e4bmquS9khYfHMmmLimk9h77YmBmfgj5XN50rdEax5IrEnNKR0t0b8nCogbp4yE78vsKA00dNkV1MSF');
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -327,7 +327,7 @@
                     const plan = e.target.dataset.plan;
                     
                     try {
-                        const response = await fetch('/create-checkout-session', {
+                        const response = await fetch('/.netlify/functions/create-checkout', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
