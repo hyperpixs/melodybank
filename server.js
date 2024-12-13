@@ -9,7 +9,9 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Middleware
-app.use(helmet());
+app.use(helmet({
+    contentSecurityPolicy: false,
+}));
 app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname));
@@ -108,6 +110,6 @@ app.post('/api/admin/login', async (req, res) => {
     }
 });
 
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+app.listen(port, '0.0.0.0', () => {
+    console.log(`Server is running on port ${port}`);
 });
