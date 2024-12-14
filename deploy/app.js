@@ -1,6 +1,6 @@
 // Secure download verification
 const verifyDownload = async (platform) => {
-    const response = await fetch('/.netlify/functions/server/verify-download', {
+    const response = await fetch('/api/verify-download', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -121,36 +121,32 @@ document.addEventListener('DOMContentLoaded', () => {
     downloadSection.appendChild(showCompatibility());
 });
 
-// Initialize Stripe and elements
-const stripe = Stripe('pk_test_51OAftokHiGPLX1HIYc8e4bmqwS9khYfHMmLimk9h77YmBmfgj5XN50rdEaxSIrEnNkR0t0b8nCogbp4yE78vskA00dNkVlMGF');
+// Initialize Stripe
+const stripe = Stripe('your_publishable_key'); // Replace with your actual publishable key
 
 // Handle subscription button clicks
-document.querySelectorAll('.subscribe-button').forEach(button => {
+document.querySelectorAll('.subscribe-btn').forEach(button => {
     button.addEventListener('click', async (e) => {
         e.preventDefault();
-        const priceId = e.target.dataset.priceId;
+        const plan = e.target.dataset.plan;
         
         try {
-            // Create checkout session
-            const response = await fetch('/.netlify/functions/server/create-checkout-session', {
+            // Call your server to create a Checkout Session
+            const response = await fetch('/create-checkout-session', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    priceId: priceId
+                    plan: plan
                 })
             });
             
             const session = await response.json();
             
-            if (!session.sessionId) {
-                throw new Error(session.error || 'Failed to create checkout session');
-            }
-            
             // Redirect to Stripe Checkout
             const result = await stripe.redirectToCheckout({
-                sessionId: session.sessionId
+                sessionId: session.id
             });
             
             if (result.error) {
@@ -160,6 +156,15 @@ document.querySelectorAll('.subscribe-button').forEach(button => {
             console.error('Error:', error);
             alert('Something went wrong. Please try again.');
         }
+    });
+});
+
+// Handle download button clicks
+document.querySelectorAll('.download-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+        const platform = e.target.closest('.download-btn').dataset.platform;
+        // You can add analytics tracking here
+        console.log(`Download clicked for ${platform}`);
     });
 });
 
@@ -208,7 +213,7 @@ form?.addEventListener('submit', async (event) => {
         }
 
         // Send the token to your server
-        const response = await fetch('/.netlify/functions/server/api/subscribe', {
+        const response = await fetch('/api/subscribe', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -221,15 +226,15 @@ form?.addEventListener('submit', async (event) => {
 
         const result = await response.json();
         
-        if (result.error) {
+        if (result.success) {
+            // Handle successful payment
+            const modal = document.getElementById('payment-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            alert('Successfully subscribed! You can now start earning with music tasks.');
+        } else {
             throw new Error(result.error);
         }
-        
-        // Handle successful payment
-        const modal = document.getElementById('payment-modal');
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        alert('Successfully subscribed! You can now start earning with music tasks.');
     } catch (err) {
         const errorElement = document.getElementById('card-errors');
         errorElement.textContent = err.message || 'An error occurred. Please try again.';
@@ -266,7 +271,7 @@ adminForm?.addEventListener('submit', async (event) => {
     const errorElement = document.getElementById('admin-error');
     
     try {
-        const response = await fetch('/.netlify/functions/server/admin/login', {
+        const response = await fetch('/api/admin/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -301,7 +306,7 @@ applyPromoButton?.addEventListener('click', async () => {
     }
 
     try {
-        const response = await fetch('/.netlify/functions/server/verify-promo', {
+        const response = await fetch('/api/verify-promo', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

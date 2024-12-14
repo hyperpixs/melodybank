@@ -1,25 +1,39 @@
 require('dotenv').config();
 const express = require('express');
-const serverless = require('serverless-http');
+const path = require('path');
 const cors = require('cors');
+const helmet = require('helmet');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
-const router = express.Router();
+const port = process.env.PORT || 3000;
 
 // Middleware
+app.use(helmet({
+    contentSecurityPolicy: false,
+}));
 app.use(cors());
 app.use(express.json());
+app.use(express.static(__dirname));
 
-// Stripe endpoints
-router.post('/create-checkout-session', async (req, res) => {
+// Serve static files from the images directory
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
+// Serve index.html for the root route
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Serve success.html
+app.get('/success', (req, res) => {
+    res.sendFile(path.join(__dirname, 'success.html'));
+});
+
+// Create a checkout session
+app.post('/create-checkout-session', async (req, res) => {
     try {
         const { priceId } = req.body;
         
-        if (!priceId) {
-            return res.status(400).json({ error: 'Price ID is required' });
-        }
-
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
             line_items: [
@@ -29,24 +43,19 @@ router.post('/create-checkout-session', async (req, res) => {
                 },
             ],
             mode: 'subscription',
-            success_url: `${process.env.DOMAIN || 'https://melody-bank.netlify.app'}/success`,
-            cancel_url: `${process.env.DOMAIN || 'https://melody-bank.netlify.app'}/cancel`,
+            success_url: `${req.protocol}://${req.get('host')}/success`,
+            cancel_url: `${req.protocol}://${req.get('host')}`,
         });
 
         res.json({ sessionId: session.id });
     } catch (error) {
-        console.error('Error creating checkout session:', error);
-        res.status(500).json({ error: 'Failed to create checkout session' });
+        console.error('Error:', error);
+        res.status(500).json({ error: error.message });
     }
 });
 
-// Health check endpoint
-router.get('/health', (req, res) => {
-    res.json({ status: 'ok' });
-});
-
 // API Routes
-router.post('/subscribe', async (req, res) => {
+app.post('/api/subscribe', async (req, res) => {
     try {
         const { token, plan } = req.body;
         
@@ -69,7 +78,7 @@ router.post('/subscribe', async (req, res) => {
     }
 });
 
-router.post('/verify-promo', async (req, res) => {
+app.post('/api/verify-promo', async (req, res) => {
     try {
         const { code } = req.body;
         // Add your promo code verification logic here
@@ -90,7 +99,7 @@ router.post('/verify-promo', async (req, res) => {
 });
 
 // Admin routes
-router.post('/admin/login', async (req, res) => {
+app.post('/api/admin/login', async (req, res) => {
     const { email, password } = req.body;
     // Add your admin authentication logic here
     // This is a placeholder - implement proper authentication
@@ -101,7 +110,6 @@ router.post('/admin/login', async (req, res) => {
     }
 });
 
-app.use('/.netlify/functions/server', router);
-
-module.exports = app;
-module.exports.handler = serverless(app);
+app.listen(port, '0.0.0.0', () => {
+    console.log(`Server is running on port ${port}`);
+});

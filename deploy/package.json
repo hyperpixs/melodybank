@@ -1,11 +1,12 @@
 {
   "name": "melodybank",
   "version": "1.0.0",
-  "description": "MelodyBank - Turn Music Into Money",
+  "description": "Turn your music listening into money",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "build": "npm install"
+    "dev": "nodemon server.js",
+    "build": "echo 'No build step needed'"
   },
   "engines": {
     "node": "18.x",
@@ -13,9 +14,10 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "helmet": "^7.1.0",
     "serverless-http": "^3.2.0",
-    "stripe": "^14.8.0"
+    "stripe": "^14.10.0"
   }
 }

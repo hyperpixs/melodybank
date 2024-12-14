@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background Circle -->
+    <circle cx="100" cy="100" r="90" fill="#4F46E5"/>
+    
+    <!-- Music Note -->
+    <path d="M120 50 L120 130 Q120 150 100 150 Q80 150 80 130 Q80 110 100 110 Q110 110 120 120" 
+          stroke="white" 
+          stroke-width="12" 
+          fill="none"/>
+    
+    <!-- Dollar Sign -->
+    <path d="M90 70 L110 70 L110 130 L90 130 M100 60 L100 140" 
+          stroke="#4ADE80" 
+          stroke-width="8" 
+          fill="none"/>
+</svg>
