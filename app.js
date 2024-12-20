@@ -121,8 +121,57 @@ document.addEventListener('DOMContentLoaded', () => {
     downloadSection.appendChild(showCompatibility());
 });
 
+// Initialize Stripe
+const stripe = Stripe('your_publishable_key'); // Replace with your actual Stripe publishable key
+
+// Handle subscription buttons
+const handleSubscription = async (priceId) => {
+    try {
+        const response = await fetch('/.netlify/functions/create-checkout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ priceId }),
+        });
+        
+        const session = await response.json();
+        
+        // Redirect to Stripe Checkout
+        const result = await stripe.redirectToCheckout({
+            sessionId: session.sessionId,
+        });
+
+        if (result.error) {
+            console.error(result.error);
+            alert('Payment failed. Please try again.');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Something went wrong. Please try again.');
+    }
+};
+
+// Add click handlers to payment buttons
+document.addEventListener('DOMContentLoaded', () => {
+    // Pro Plan button
+    const proButtons = document.querySelectorAll('.payment-button:not(:first-child):not(:last-child)');
+    proButtons.forEach(button => {
+        button.addEventListener('click', () => handleSubscription('price_pro')); // Replace with your actual Stripe price ID
+    });
+
+    // Enterprise Plan button
+    const enterpriseButtons = document.querySelectorAll('.payment-button:last-child');
+    enterpriseButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Open email client for Enterprise plan
+            window.location.href = 'mailto:sales@melodybank.com?subject=Enterprise Plan Inquiry';
+        });
+    });
+});
+
 // Initialize Stripe and elements
-const stripe = Stripe('pk_test_51OAftokHiGPLX1HIYc8e4bmqwS9khYfHMmLimk9h77YmBmfgj5XN50rdEaxSIrEnNkR0t0b8nCogbp4yE78vskA00dNkVlMGF');
+const stripeElements = Stripe('pk_test_51OAftokHiGPLX1HIYc8e4bmqwS9khYfHMmLimk9h77YmBmfgj5XN50rdEaxSIrEnNkR0t0b8nCogbp4yE78vskA00dNkVlMGF');
 
 // Handle subscription button clicks
 document.querySelectorAll('.subscribe-button').forEach(button => {
@@ -149,7 +198,7 @@ document.querySelectorAll('.subscribe-button').forEach(button => {
             }
             
             // Redirect to Stripe Checkout
-            const result = await stripe.redirectToCheckout({
+            const result = await stripeElements.redirectToCheckout({
                 sessionId: session.sessionId
             });
             
@@ -164,7 +213,7 @@ document.querySelectorAll('.subscribe-button').forEach(button => {
 });
 
 // Create card element
-const elements = stripe.elements();
+const elements = stripeElements.elements();
 const card = elements.create('card');
 const cardElement = document.getElementById('card-element');
 if (cardElement) {
@@ -197,7 +246,7 @@ form?.addEventListener('submit', async (event) => {
     submitButton.textContent = 'Processing...';
 
     try {
-        const { token, error } = await stripe.createToken(card);
+        const { token, error } = await stripeElements.createToken(card);
         
         if (error) {
             const errorElement = document.getElementById('card-errors');
