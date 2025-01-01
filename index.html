@@ -8,12 +8,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" type="image/svg+xml" href="images/logo.svg">
     <style>
-        .glass {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+        body {
+            background: linear-gradient(to bottom right, #1a1a2e, #16213e);
+            min-height: 100vh;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #4527a0, #4a148c);
         }
         .download-card {
             background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(8px);
             transition: all 0.3s ease;
         }
         .download-card:hover {
@@ -22,143 +26,130 @@
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white">
+<body class="text-white">
     <!-- Navigation -->
-    <nav class="bg-gray-800/80 backdrop-blur-md fixed w-full z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="fixed w-full z-50 bg-opacity-90 bg-gray-900 backdrop-blur">
+        <div class="max-w-7xl mx-auto px-4">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                        <a href="#" class="flex items-center">
-                            <img src="images/logo.svg" alt="MelodyBank Logo" class="h-10 w-10 mr-2">
-                            <span class="text-xl font-bold text-white">MelodyBank</span>
-                        </a>
-                    </div>
-                    <div class="hidden md:block">
-                        <div class="ml-10 flex items-baseline space-x-4">
-                            <a href="#home" class="text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                            <a href="#downloads" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Downloads</a>
-                            <a href="#features" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Features</a>
-                            <a href="#pricing" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Pricing</a>
-                            <a href="#earnings" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Earnings</a>
-                        </div>
-                    </div>
+                    <a href="#" class="flex items-center">
+                        <img src="images/logo.svg" alt="MelodyBank Logo" class="h-8 w-8 mr-2">
+                        <span class="text-xl font-semibold">MelodyBank</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-sm font-medium">Home</a>
+                    <a href="#downloads" class="text-sm font-medium">Downloads</a>
+                    <a href="#" class="text-sm font-medium">Features</a>
+                    <a href="#" class="text-sm font-medium">Pricing</a>
+                    <a href="#" class="text-sm font-medium">Earnings</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="pt-20 pb-32 relative bg-gradient-to-r from-purple-900 to-blue-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h1 class="text-5xl font-extrabold tracking-tight text-white sm:text-6xl md:text-7xl">
-                    MelodyBank
-                </h1>
-                <p class="mt-6 text-xl text-gray-300 max-w-3xl mx-auto">
-                    Turn your music listening into money. Free to download on all major platforms.
-                    <br>Upgrade anytime for premium features.
-                </p>
-                <div class="mt-10">
-                    <a href="https://drive.google.com/uc?export=download&id=1JrTiYflIVhn6EDkxXTgcDLEOSRYFfEKX" 
-                       class="inline-flex items-center px-6 py-3 text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-all transform hover:-translate-y-0.5">
-                        <i class="fas fa-download mr-2"></i>
-                        Download Free
-                    </a>
-                </div>
-            </div>
+    <section class="pt-32 pb-20 hero-gradient">
+        <div class="max-w-4xl mx-auto text-center px-4">
+            <h1 class="text-5xl font-bold mb-6">Turn your music listening into money.</h1>
+            <p class="text-xl text-gray-200 mb-12">Free to download on all major platforms.<br>Upgrade anytime for premium features.</p>
+            <a href="https://drive.google.com/uc?export=download&id=1JrTiYflIVhn6EDkxXTgcDLEOSRYFfEKX" 
+               class="inline-flex items-center px-6 py-3 text-lg font-medium rounded-lg bg-blue-600 hover:bg-blue-700 transition-all">
+                <i class="fas fa-download mr-2"></i>
+                Download Free
+            </a>
         </div>
     </section>
 
     <!-- Download Section -->
-    <section id="downloads" class="py-20 bg-gray-800/95">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="py-20">
+        <div class="max-w-6xl mx-auto px-4">
             <h2 class="text-4xl font-bold text-center mb-4">Download For Free</h2>
             <p class="text-xl text-gray-300 text-center mb-16">Available on all your favorite platforms. No purchase required.</p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Windows -->
-                <div class="download-card rounded-lg p-6">
-                    <i class="fab fa-windows text-6xl text-blue-400 mb-4 block text-center"></i>
-                    <h3 class="text-xl font-semibold text-center mb-4">Windows</h3>
-                    <div class="text-center">
-                        <a href="https://drive.google.com/uc?export=download&id=1JrTiYflIVhn6EDkxXTgcDLEOSRYFfEKX" 
-                           class="download-btn inline-flex items-center px-4 py-2 bg-blue-600 rounded hover:bg-blue-700 w-full justify-center mb-2">
-                            <i class="fas fa-download mr-2"></i>
-                            Download for Windows
-                        </a>
-                        <p class="text-sm text-gray-400">Version 1.0.0 | Windows 10/11 | 75 MB</p>
+                <div class="download-card rounded-xl p-8">
+                    <div class="flex items-center justify-center mb-6">
+                        <i class="fab fa-windows text-5xl text-blue-400"></i>
                     </div>
+                    <h3 class="text-2xl font-semibold text-center mb-6">Windows</h3>
+                    <a href="https://drive.google.com/uc?export=download&id=1JrTiYflIVhn6EDkxXTgcDLEOSRYFfEKX" 
+                       class="block w-full text-center py-3 px-4 rounded-lg bg-blue-600 hover:bg-blue-700 transition-colors mb-3">
+                        <i class="fas fa-download mr-2"></i>
+                        Download for Windows
+                    </a>
+                    <p class="text-sm text-center text-gray-400">Version 1.0.0 | Windows 10/11 | 75 MB</p>
                 </div>
 
                 <!-- macOS -->
-                <div class="download-card rounded-lg p-6">
-                    <i class="fab fa-apple text-6xl text-gray-200 mb-4 block text-center"></i>
-                    <h3 class="text-xl font-semibold text-center mb-4">macOS</h3>
-                    <div class="text-center">
-                        <button disabled class="download-btn inline-flex items-center px-4 py-2 bg-blue-600/50 rounded w-full justify-center cursor-not-allowed">
-                            <i class="fas fa-download mr-2"></i>
-                            Coming Soon
-                        </button>
+                <div class="download-card rounded-xl p-8">
+                    <div class="flex items-center justify-center mb-6">
+                        <i class="fab fa-apple text-5xl text-gray-300"></i>
                     </div>
+                    <h3 class="text-2xl font-semibold text-center mb-6">macOS</h3>
+                    <button disabled class="block w-full text-center py-3 px-4 rounded-lg bg-blue-600/50 cursor-not-allowed">
+                        <i class="fas fa-download mr-2"></i>
+                        Coming Soon
+                    </button>
                 </div>
 
                 <!-- iOS -->
-                <div class="download-card rounded-lg p-6">
-                    <i class="fab fa-app-store-ios text-6xl text-gray-200 mb-4 block text-center"></i>
-                    <h3 class="text-xl font-semibold text-center mb-4">iOS</h3>
-                    <div class="text-center">
-                        <button disabled class="download-btn inline-flex items-center px-4 py-2 bg-blue-600/50 rounded w-full justify-center cursor-not-allowed">
-                            <i class="fab fa-app-store mr-2"></i>
-                            Coming Soon
-                        </button>
+                <div class="download-card rounded-xl p-8">
+                    <div class="flex items-center justify-center mb-6">
+                        <i class="fab fa-app-store-ios text-5xl text-gray-300"></i>
                     </div>
+                    <h3 class="text-2xl font-semibold text-center mb-6">iOS</h3>
+                    <button disabled class="block w-full text-center py-3 px-4 rounded-lg bg-blue-600/50 cursor-not-allowed">
+                        <i class="fab fa-app-store mr-2"></i>
+                        Coming Soon
+                    </button>
                 </div>
 
                 <!-- Android -->
-                <div class="download-card rounded-lg p-6">
-                    <i class="fab fa-android text-6xl text-green-500 mb-4 block text-center"></i>
-                    <h3 class="text-xl font-semibold text-center mb-4">Android</h3>
-                    <div class="text-center">
-                        <button disabled class="download-btn inline-flex items-center px-4 py-2 bg-blue-600/50 rounded w-full justify-center cursor-not-allowed">
-                            <i class="fab fa-google-play mr-2"></i>
-                            Coming Soon
-                        </button>
+                <div class="download-card rounded-xl p-8">
+                    <div class="flex items-center justify-center mb-6">
+                        <i class="fab fa-android text-5xl text-green-400"></i>
                     </div>
+                    <h3 class="text-2xl font-semibold text-center mb-6">Android</h3>
+                    <button disabled class="block w-full text-center py-3 px-4 rounded-lg bg-blue-600/50 cursor-not-allowed">
+                        <i class="fab fa-google-play mr-2"></i>
+                        Coming Soon
+                    </button>
                 </div>
 
                 <!-- Xbox -->
-                <div class="download-card rounded-lg p-6">
-                    <i class="fab fa-xbox text-6xl text-green-600 mb-4 block text-center"></i>
-                    <h3 class="text-xl font-semibold text-center mb-4">Xbox</h3>
-                    <div class="text-center">
-                        <button disabled class="download-btn inline-flex items-center px-4 py-2 bg-blue-600/50 rounded w-full justify-center cursor-not-allowed">
-                            <i class="fas fa-gamepad mr-2"></i>
-                            Coming Soon
-                        </button>
+                <div class="download-card rounded-xl p-8">
+                    <div class="flex items-center justify-center mb-6">
+                        <i class="fab fa-xbox text-5xl text-green-500"></i>
                     </div>
+                    <h3 class="text-2xl font-semibold text-center mb-6">Xbox</h3>
+                    <button disabled class="block w-full text-center py-3 px-4 rounded-lg bg-blue-600/50 cursor-not-allowed">
+                        <i class="fas fa-gamepad mr-2"></i>
+                        Coming Soon
+                    </button>
                 </div>
 
                 <!-- PlayStation -->
-                <div class="download-card rounded-lg p-6">
-                    <i class="fab fa-playstation text-6xl text-blue-500 mb-4 block text-center"></i>
-                    <h3 class="text-xl font-semibold text-center mb-4">PlayStation</h3>
-                    <div class="text-center">
-                        <button disabled class="download-btn inline-flex items-center px-4 py-2 bg-blue-600/50 rounded w-full justify-center cursor-not-allowed">
-                            <i class="fas fa-gamepad mr-2"></i>
-                            Coming Soon
-                        </button>
+                <div class="download-card rounded-xl p-8">
+                    <div class="flex items-center justify-center mb-6">
+                        <i class="fab fa-playstation text-5xl text-blue-500"></i>
                     </div>
+                    <h3 class="text-2xl font-semibold text-center mb-6">PlayStation</h3>
+                    <button disabled class="block w-full text-center py-3 px-4 rounded-lg bg-blue-600/50 cursor-not-allowed">
+                        <i class="fas fa-gamepad mr-2"></i>
+                        Coming Soon
+                    </button>
                 </div>
             </div>
 
             <!-- System Requirements -->
-            <div class="mt-16 text-center text-gray-400">
-                <h3 class="font-semibold mb-2">System Requirements:</h3>
+            <div class="mt-20 text-center text-gray-400">
+                <h3 class="text-lg font-semibold mb-3">System Requirements:</h3>
                 <p>OS: Windows 10 or later</p>
                 <p>RAM: 4GB RAM</p>
-                <div class="mt-4">
-                    <span class="inline-flex items-center px-3 py-1 rounded-full bg-green-600/20 text-green-400">
+                <div class="mt-6">
+                    <span class="inline-flex items-center px-4 py-2 rounded-full bg-green-600/20 text-green-400">
                         <i class="fas fa-shield-alt mr-2"></i>
                         Secure Download
                     </span>
@@ -167,189 +158,8 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="py-20 bg-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-center mb-4">Optional Premium Features</h2>
-            <p class="text-xl text-gray-300 text-center mb-16">The app is free to download and use. Upgrade anytime to unlock premium features.</p>
-            <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="px-6 py-8">
-                        <h3 class="text-2xl font-bold text-gray-900 text-center">Basic</h3>
-                        <div class="mt-4 flex justify-center">
-                            <span class="text-4xl font-bold">$0</span>
-                            <span class="text-gray-600 ml-1 mt-8">/month</span>
-                        </div>
-                        <ul class="mt-6 space-y-4">
-                            <li class="flex items-center">
-                                <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="ml-3 text-gray-600">Basic Features</span>
-                            </li>
-                        </ul>
-                        <button class="mt-8 w-full bg-indigo-600 text-white rounded-md px-4 py-2 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                            Get Started Free
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-indigo-500">
-                    <div class="px-6 py-8">
-                        <h3 class="text-2xl font-bold text-gray-900 text-center">Pro</h3>
-                        <div class="mt-4 flex justify-center">
-                            <span class="text-4xl font-bold">$9.99</span>
-                            <span class="text-gray-600 ml-1 mt-8">/month</span>
-                        </div>
-                        <ul class="mt-6 space-y-4">
-                            <li class="flex items-center">
-                                <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="ml-3 text-gray-600">All Free Features</span>
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="ml-3 text-gray-600">Premium Support</span>
-                            </li>
-                        </ul>
-                        <button class="mt-8 w-full bg-indigo-600 text-white rounded-md px-4 py-2 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                            Subscribe Now
-                        </button>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="px-6 py-8">
-                        <h3 class="text-2xl font-bold text-gray-900 text-center">Enterprise</h3>
-                        <div class="mt-4 flex justify-center">
-                            <span class="text-4xl font-bold">$29.99</span>
-                            <span class="text-gray-600 ml-1 mt-8">/month</span>
-                        </div>
-                        <ul class="mt-6 space-y-4">
-                            <li class="flex items-center">
-                                <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="ml-3 text-gray-600">All Pro Features</span>
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="ml-3 text-gray-600">Priority Support</span>
-                            </li>
-                        </ul>
-                        <button class="mt-8 w-full bg-indigo-600 text-white rounded-md px-4 py-2 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                            Contact Sales
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="py-20 bg-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-center mb-16">Premium Features</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-gray-800 rounded-lg p-6">
-                    <h3 class="text-xl font-semibold mb-4">Speed Listening</h3>
-                    <p class="text-gray-300">Earn more by mastering speed listening tasks at various speeds.</p>
-                </div>
-                <div class="bg-gray-800 rounded-lg p-6">
-                    <h3 class="text-xl font-semibold mb-4">Genre Exploration</h3>
-                    <p class="text-gray-300">Discover new music while earning rewards for genre-based tasks.</p>
-                </div>
-                <div class="bg-gray-800 rounded-lg p-6">
-                    <h3 class="text-xl font-semibold mb-4">Mood Matching</h3>
-                    <p class="text-gray-300">Match songs to moods and earn rewards for accuracy.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Earnings Section -->
-    <section id="earnings" class="py-20 bg-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-center mb-8">How Earnings Work</h2>
-            <div class="text-center mb-16">
-                <p class="text-xl text-gray-300 mb-4">Earn rewards by completing music-related tasks</p>
-                <p class="text-gray-400">Your earnings are based on task completion, not just listening time</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                <div class="bg-gray-700 rounded-lg p-6">
-                    <h3 class="text-xl font-semibold mb-4">Task-Based Rewards</h3>
-                    <ul class="space-y-3 text-gray-300">
-                        <li>✓ Music Analysis Tasks</li>
-                        <li>✓ Genre Classification</li>
-                        <li>✓ Playlist Curation</li>
-                        <li>✓ Quality Assessment</li>
-                    </ul>
-                </div>
-                <div class="bg-gray-700 rounded-lg p-6">
-                    <h3 class="text-xl font-semibold mb-4">Earning Factors</h3>
-                    <ul class="space-y-3 text-gray-300">
-                        <li>✓ Task Complexity</li>
-                        <li>✓ Accuracy & Quality</li>
-                        <li>✓ Consistency</li>
-                        <li>✓ Experience Level</li>
-                    </ul>
-                </div>
-                <div class="bg-gray-700 rounded-lg p-6">
-                    <h3 class="text-xl font-semibold mb-4">Bonus Opportunities</h3>
-                    <ul class="space-y-3 text-gray-300">
-                        <li>✓ Special Projects</li>
-                        <li>✓ Promotional Events</li>
-                        <li>✓ Referral Rewards</li>
-                        <li>✓ Achievement Milestones</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="bg-gray-700 rounded-lg p-8 mb-16">
-                <h3 class="text-2xl font-bold text-center mb-6">Important Notice About Earnings</h3>
-                <p class="text-gray-300 text-center mb-4">Earnings at MelodyBank are based on completing specific music-related tasks, not just listening time. Your income potential depends on:</p>
-                <ul class="text-gray-300 max-w-2xl mx-auto space-y-2">
-                    <li>• The number and types of tasks you complete</li>
-                    <li>• The quality and accuracy of your work</li>
-                    <li>• Your subscription tier and available task types</li>
-                    <li>• Current market demand for music tasks</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Payment Modal -->
-    <div id="payment-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
-        <div class="bg-white p-8 rounded-lg max-w-md w-full">
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">Complete Your Subscription</h3>
-            <form id="payment-form" class="space-y-4">
-                <div id="card-element" class="p-4 border rounded"></div>
-                <div id="card-errors" class="text-red-600" role="alert"></div>
-                <button type="submit" class="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                    Subscribe
-                </button>
-                <button type="button" id="close-modal" class="w-full mt-2 bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">
-                    Cancel
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <footer class="bg-gray-900 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <p class="text-gray-400">&copy; 2024 MelodyBank. All rights reserved.</p>
-            </div>
-        </div>
+    <footer class="py-8 text-center text-gray-400">
+        <p>&copy; 2024 MelodyBank. All rights reserved.</p>
     </footer>
-
-    <script src="https://js.stripe.com/v3/"></script>
-    <script src="app.js"></script>
 </body>
 </html>
