@@ -5,13 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MelodyBank - Turn Music Into Money</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        .download-card {
+            background: rgba(30, 41, 59, 0.7);
+            transition: all 0.3s ease;
+        }
+        .download-card:hover {
+            transform: translateY(-5px);
+            background: rgba(30, 41, 59, 0.9);
+        }
+    </style>
 </head>
 <body class="bg-gray-900 text-white">
     <!-- Navigation -->
-    <nav class="bg-gray-800 fixed w-full z-50">
+    <nav class="bg-gray-800/80 backdrop-blur-md fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
@@ -43,10 +56,12 @@
                     MelodyBank
                 </h1>
                 <p class="mt-6 text-xl text-gray-300 max-w-3xl mx-auto">
-                    Turn your music listening into money. Free to download on all major platforms. Upgrade anytime for premium features.
+                    Turn your music listening into money. Free to download on all major platforms.
+                    <br>Upgrade anytime for premium features.
                 </p>
                 <div class="mt-10">
-                    <a href="https://drive.google.com/uc?export=download&id=1JrTiYflIVhn6EDkxXTgcDLEOSRYFfEKX" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+                    <a href="https://drive.google.com/uc?export=download&id=1JrTiYflIVhn6EDkxXTgcDLEOSRYFfEKX" 
+                       class="inline-flex items-center px-6 py-3 text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-all transform hover:-translate-y-0.5">
                         <i class="fas fa-download mr-2"></i>
                         Download Free
                     </a>
@@ -56,82 +71,97 @@
     </section>
 
     <!-- Download Section -->
-    <section id="downloads" class="py-20 bg-gray-800">
+    <section id="downloads" class="py-20 bg-gray-800/95">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-bold text-center mb-4">Download For Free</h2>
             <p class="text-xl text-gray-300 text-center mb-16">Available on all your favorite platforms. No purchase required.</p>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Windows -->
-                <div class="bg-gray-700 rounded-lg p-6 hover:bg-gray-600 transition">
+                <div class="download-card rounded-lg p-6">
                     <i class="fab fa-windows text-6xl text-blue-400 mb-4 block text-center"></i>
                     <h3 class="text-xl font-semibold text-center mb-4">Windows</h3>
                     <div class="text-center">
-                        <a href="https://drive.google.com/uc?export=download&id=1JrTiYflIVhn6EDkxXTgcDLEOSRYFfEKX" class="download-btn inline-flex items-center px-4 py-2 bg-blue-600 rounded hover:bg-blue-700" data-platform="windows">
+                        <a href="https://drive.google.com/uc?export=download&id=1JrTiYflIVhn6EDkxXTgcDLEOSRYFfEKX" 
+                           class="download-btn inline-flex items-center px-4 py-2 bg-blue-600 rounded hover:bg-blue-700 w-full justify-center mb-2">
                             <i class="fas fa-download mr-2"></i>
                             Download for Windows
                         </a>
-                        <p class="mt-2 text-sm text-gray-400">Version 1.0.0 | Windows 10/11 | 75 MB</p>
+                        <p class="text-sm text-gray-400">Version 1.0.0 | Windows 10/11 | 75 MB</p>
                     </div>
                 </div>
 
                 <!-- macOS -->
-                <div class="bg-gray-700 rounded-lg p-6 hover:bg-gray-600 transition">
+                <div class="download-card rounded-lg p-6">
                     <i class="fab fa-apple text-6xl text-gray-200 mb-4 block text-center"></i>
                     <h3 class="text-xl font-semibold text-center mb-4">macOS</h3>
                     <div class="text-center">
-                        <a href="downloads/MusicTasksPro-Mac.dmg" class="download-btn inline-flex items-center px-4 py-2 bg-blue-600 rounded hover:bg-blue-700" data-platform="mac">
+                        <button disabled class="download-btn inline-flex items-center px-4 py-2 bg-blue-600/50 rounded w-full justify-center cursor-not-allowed">
                             <i class="fas fa-download mr-2"></i>
-                            Download for Mac
-                        </a>
+                            Coming Soon
+                        </button>
                     </div>
                 </div>
 
                 <!-- iOS -->
-                <div class="bg-gray-700 rounded-lg p-6 hover:bg-gray-600 transition">
+                <div class="download-card rounded-lg p-6">
                     <i class="fab fa-app-store-ios text-6xl text-gray-200 mb-4 block text-center"></i>
                     <h3 class="text-xl font-semibold text-center mb-4">iOS</h3>
                     <div class="text-center">
-                        <a href="https://apps.apple.com/app/musictaskspro" class="download-btn inline-flex items-center px-4 py-2 bg-blue-600 rounded hover:bg-blue-700" data-platform="ios">
+                        <button disabled class="download-btn inline-flex items-center px-4 py-2 bg-blue-600/50 rounded w-full justify-center cursor-not-allowed">
                             <i class="fab fa-app-store mr-2"></i>
-                            Download on App Store
-                        </a>
+                            Coming Soon
+                        </button>
                     </div>
                 </div>
 
                 <!-- Android -->
-                <div class="bg-gray-700 rounded-lg p-6 hover:bg-gray-600 transition">
+                <div class="download-card rounded-lg p-6">
                     <i class="fab fa-android text-6xl text-green-500 mb-4 block text-center"></i>
                     <h3 class="text-xl font-semibold text-center mb-4">Android</h3>
                     <div class="text-center">
-                        <a href="https://play.google.com/store/apps/details?id=com.musictaskspro" class="download-btn inline-flex items-center px-4 py-2 bg-blue-600 rounded hover:bg-blue-700" data-platform="android">
+                        <button disabled class="download-btn inline-flex items-center px-4 py-2 bg-blue-600/50 rounded w-full justify-center cursor-not-allowed">
                             <i class="fab fa-google-play mr-2"></i>
-                            Get it on Play Store
-                        </a>
+                            Coming Soon
+                        </button>
                     </div>
                 </div>
 
                 <!-- Xbox -->
-                <div class="bg-gray-700 rounded-lg p-6 hover:bg-gray-600 transition">
+                <div class="download-card rounded-lg p-6">
                     <i class="fab fa-xbox text-6xl text-green-600 mb-4 block text-center"></i>
                     <h3 class="text-xl font-semibold text-center mb-4">Xbox</h3>
                     <div class="text-center">
-                        <a href="https://xbox.com/games/store/musictaskspro" class="download-btn inline-flex items-center px-4 py-2 bg-blue-600 rounded hover:bg-blue-700" data-platform="xbox">
+                        <button disabled class="download-btn inline-flex items-center px-4 py-2 bg-blue-600/50 rounded w-full justify-center cursor-not-allowed">
                             <i class="fas fa-gamepad mr-2"></i>
-                            Get on Xbox Store
-                        </a>
+                            Coming Soon
+                        </button>
                     </div>
                 </div>
 
                 <!-- PlayStation -->
-                <div class="bg-gray-700 rounded-lg p-6 hover:bg-gray-600 transition">
+                <div class="download-card rounded-lg p-6">
                     <i class="fab fa-playstation text-6xl text-blue-500 mb-4 block text-center"></i>
                     <h3 class="text-xl font-semibold text-center mb-4">PlayStation</h3>
                     <div class="text-center">
-                        <a href="https://store.playstation.com/musictaskspro" class="download-btn inline-flex items-center px-4 py-2 bg-blue-600 rounded hover:bg-blue-700" data-platform="playstation">
+                        <button disabled class="download-btn inline-flex items-center px-4 py-2 bg-blue-600/50 rounded w-full justify-center cursor-not-allowed">
                             <i class="fas fa-gamepad mr-2"></i>
-                            Get on PS Store
-                        </a>
+                            Coming Soon
+                        </button>
                     </div>
+                </div>
+            </div>
+
+            <!-- System Requirements -->
+            <div class="mt-16 text-center text-gray-400">
+                <h3 class="font-semibold mb-2">System Requirements:</h3>
+                <p>OS: Windows 10 or later</p>
+                <p>RAM: 4GB RAM</p>
+                <div class="mt-4">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full bg-green-600/20 text-green-400">
+                        <i class="fas fa-shield-alt mr-2"></i>
+                        Secure Download
+                    </span>
                 </div>
             </div>
         </div>
@@ -311,7 +341,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="bg-gray-900 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
