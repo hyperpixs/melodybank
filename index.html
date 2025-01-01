@@ -9,26 +9,32 @@
     <link rel="icon" type="image/svg+xml" href="images/logo.svg">
     <style>
         body {
-            background: linear-gradient(to bottom right, #1a1a2e, #16213e);
+            background: #0a0a16;
             min-height: 100vh;
         }
         .hero-gradient {
             background: linear-gradient(135deg, #4527a0, #4a148c);
         }
         .download-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(8px);
+            background: #1a1b26;
             transition: all 0.3s ease;
+            border-radius: 0.75rem;
         }
         .download-card:hover {
             transform: translateY(-5px);
-            background: rgba(30, 41, 59, 0.9);
+        }
+        .download-btn {
+            background: #3b82f6;
+            transition: background-color 0.2s;
+        }
+        .download-btn:hover {
+            background: #2563eb;
         }
     </style>
 </head>
 <body class="text-white">
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-opacity-90 bg-gray-900 backdrop-blur">
+    <nav class="fixed w-full z-50 bg-opacity-90 bg-[#0a0a16] backdrop-blur">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
@@ -69,91 +75,73 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Windows -->
-                <div class="download-card rounded-xl p-8">
-                    <div class="flex items-center justify-center mb-6">
-                        <i class="fab fa-windows text-5xl text-blue-400"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold text-center mb-6">Windows</h3>
+                <div class="download-card p-8">
+                    <i class="fab fa-windows text-4xl text-blue-400 mb-6"></i>
+                    <h3 class="text-2xl font-semibold mb-6">Windows</h3>
                     <a href="https://drive.google.com/uc?export=download&id=1JrTiYflIVhn6EDkxXTgcDLEOSRYFfEKX" 
-                       class="block w-full text-center py-3 px-4 rounded-lg bg-blue-600 hover:bg-blue-700 transition-colors mb-3">
+                       class="download-btn block w-full text-center py-3 px-4 rounded-lg mb-3">
                         <i class="fas fa-download mr-2"></i>
                         Download for Windows
                     </a>
-                    <p class="text-sm text-center text-gray-400">Version 1.0.0 | Windows 10/11 | 75 MB</p>
+                    <p class="text-sm text-gray-500">Version 1.0.0 | Windows 10/11 | 75 MB</p>
                 </div>
 
                 <!-- macOS -->
-                <div class="download-card rounded-xl p-8">
-                    <div class="flex items-center justify-center mb-6">
-                        <i class="fab fa-apple text-5xl text-gray-300"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold text-center mb-6">macOS</h3>
-                    <button disabled class="block w-full text-center py-3 px-4 rounded-lg bg-blue-600/50 cursor-not-allowed">
+                <div class="download-card p-8">
+                    <i class="fab fa-apple text-4xl text-gray-300 mb-6"></i>
+                    <h3 class="text-2xl font-semibold mb-6">macOS</h3>
+                    <div class="text-gray-400">
                         <i class="fas fa-download mr-2"></i>
                         Coming Soon
-                    </button>
+                    </div>
                 </div>
 
                 <!-- iOS -->
-                <div class="download-card rounded-xl p-8">
-                    <div class="flex items-center justify-center mb-6">
-                        <i class="fab fa-app-store-ios text-5xl text-gray-300"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold text-center mb-6">iOS</h3>
-                    <button disabled class="block w-full text-center py-3 px-4 rounded-lg bg-blue-600/50 cursor-not-allowed">
-                        <i class="fab fa-app-store mr-2"></i>
+                <div class="download-card p-8">
+                    <i class="fab fa-app-store-ios text-4xl text-gray-300 mb-6"></i>
+                    <h3 class="text-2xl font-semibold mb-6">iOS</h3>
+                    <div class="text-gray-400">
+                        <i class="far fa-clock mr-2"></i>
                         Coming Soon
-                    </button>
+                    </div>
                 </div>
 
                 <!-- Android -->
-                <div class="download-card rounded-xl p-8">
-                    <div class="flex items-center justify-center mb-6">
-                        <i class="fab fa-android text-5xl text-green-400"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold text-center mb-6">Android</h3>
-                    <button disabled class="block w-full text-center py-3 px-4 rounded-lg bg-blue-600/50 cursor-not-allowed">
-                        <i class="fab fa-google-play mr-2"></i>
+                <div class="download-card p-8">
+                    <i class="fab fa-android text-4xl text-green-400 mb-6"></i>
+                    <h3 class="text-2xl font-semibold mb-6">Android</h3>
+                    <div class="text-gray-400">
+                        <i class="fas fa-play mr-2"></i>
                         Coming Soon
-                    </button>
+                    </div>
                 </div>
 
                 <!-- Xbox -->
-                <div class="download-card rounded-xl p-8">
-                    <div class="flex items-center justify-center mb-6">
-                        <i class="fab fa-xbox text-5xl text-green-500"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold text-center mb-6">Xbox</h3>
-                    <button disabled class="block w-full text-center py-3 px-4 rounded-lg bg-blue-600/50 cursor-not-allowed">
+                <div class="download-card p-8">
+                    <i class="fab fa-xbox text-4xl text-green-500 mb-6"></i>
+                    <h3 class="text-2xl font-semibold mb-6">Xbox</h3>
+                    <div class="text-gray-400">
                         <i class="fas fa-gamepad mr-2"></i>
                         Coming Soon
-                    </button>
+                    </div>
                 </div>
 
                 <!-- PlayStation -->
-                <div class="download-card rounded-xl p-8">
-                    <div class="flex items-center justify-center mb-6">
-                        <i class="fab fa-playstation text-5xl text-blue-500"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold text-center mb-6">PlayStation</h3>
-                    <button disabled class="block w-full text-center py-3 px-4 rounded-lg bg-blue-600/50 cursor-not-allowed">
+                <div class="download-card p-8">
+                    <i class="fab fa-playstation text-4xl text-blue-500 mb-6"></i>
+                    <h3 class="text-2xl font-semibold mb-6">PlayStation</h3>
+                    <div class="text-gray-400">
                         <i class="fas fa-gamepad mr-2"></i>
                         Coming Soon
-                    </button>
+                    </div>
                 </div>
             </div>
 
             <!-- System Requirements -->
-            <div class="mt-20 text-center text-gray-400">
-                <h3 class="text-lg font-semibold mb-3">System Requirements:</h3>
-                <p>OS: Windows 10 or later</p>
-                <p>RAM: 4GB RAM</p>
-                <div class="mt-6">
-                    <span class="inline-flex items-center px-4 py-2 rounded-full bg-green-600/20 text-green-400">
-                        <i class="fas fa-shield-alt mr-2"></i>
-                        Secure Download
-                    </span>
-                </div>
+            <div class="mt-20 text-gray-400">
+                <h3 class="text-sm mb-1">System Requirements:</h3>
+                <p class="text-sm">OS: Windows 10 or later</p>
+                <p class="text-sm">RAM: 4GB RAM</p>
             </div>
         </div>
     </section>
